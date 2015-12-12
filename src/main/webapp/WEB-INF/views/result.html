@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<title>Результат</title>
+<head>
+<script th:src="@{/static/js/glMatrix-0.9.5.min.js}"></script>
+<script th:src="@{/static/js/script.js}"></script>
+
+<script id="shader-fs" type="x-shader/x-fragment">
+    precision mediump float;
+    varying vec4 vColor;
+    void main(void) {
+        gl_FragColor = vColor;
+    }
+</script>
+
+<script id="shader-vs" type="x-shader/x-vertex">
+    attribute vec3 aVertexPosition;
+    attribute vec4 aVertexColor;
+    uniform mat4 uMVMatrix;
+    uniform mat4 uPMatrix;
+    varying vec4 vColor;
+    void main(void) {
+        gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+        vColor = aVertexColor;
+    }
+</script>
+
+</head>
+<body>
+    Результат№ <span th:text="${result.id}"/>. Объем воды: <span th:text="${result.waterCapacity}"/>. Дата добавления: <span th:text="${result.added}"/><br/>
+    <canvas id="canvas" style="border: none;" width="1300" height="900"></canvas>
+    <br/>
+</body>
+<div>
+    <a th:href="@{/results}">К списку результатов</a>
+</div>
+</html>

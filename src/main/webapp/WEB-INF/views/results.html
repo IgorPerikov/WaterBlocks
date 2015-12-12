@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<title>Результаты</title>
+<body>
+<div>
+    Список результатов: <br/> <br/>
+
+    <div th:each="resultItem : ${results}">
+        <a th:href="@{/result(id=${resultItem.id})}">результат№ <span th:text="${resultItem.id}"/></a> - объем воды: <span th:text="${resultItem.waterCapacity}"/>
+    </div>
+    <br/>
+</div>
+<div>
+    <a th:href="@{/}">На главную</a>
+</div>
+</body>
+</html>

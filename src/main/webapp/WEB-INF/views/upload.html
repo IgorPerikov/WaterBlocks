@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Загрузка</title>
+</head>
+<body>
+    <div>
+        Здесь вы можете загрузить новый файл с данными
+        <form method="post" th:action="@{/uploadFile}" enctype="multipart/form-data">
+            <input title="Выберите файл" type="file" name="fileUpload" size="50" /> <br/>
+            <input type="submit" value="Загрузить файл"/>
+        </form>
+    </div>
+    <div>
+    <a th:href="@{/}">На главную</a>
+</div>
+</body>
+</html>
